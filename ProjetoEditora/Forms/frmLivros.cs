@@ -1,6 +1,9 @@
-﻿using ProjetoEditora.DB;
+﻿using MySql.Data.MySqlClient;
+using ProjetoEditora.Conection;
+using ProjetoEditora.DB;
 using ProjetoEditora.Model;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -14,38 +17,33 @@ namespace ProjetoEditora.Forms
 {
     public partial class frmLivros : Form
     {
-        LivroModel livroModel;
         Sql sql;
 
         private void Carrega_Grid()
         {
             dgLivros.AutoGenerateColumns = true;
             dgLivros.DataSource = sql.all();
+           
         }
 
         private void Formate_Grid()
         {
-            dgLivros.ReadOnly = true;
-            dgLivros.ScrollBars = ScrollBars.Vertical;
+            dgLivros.Columns["ID"].DisplayIndex = 0;
+            dgLivros.Columns["Nome"].DisplayIndex = 1;
+            dgLivros.Columns["is"].DisplayIndex = 2;
+            dgLivros.Columns["Observaçãp"].DisplayIndex = 3;
+            dgLivros.Columns["Editora"].DisplayIndex = 4;
+            dgLivros.Columns["Excluir"].DisplayIndex = 5;
 
-            dgLivros.Columns[0].HeaderText = "ID";
-            dgLivros.Columns[1].HeaderText = "Nome";
-            dgLivros.Columns[2].HeaderText = "is";
-            dgLivros.Columns[3].HeaderText = "Observaçãp";
-            dgLivros.Columns[4].HeaderText = "Editora";
 
-            dgLivros.Columns[0].Width = 100;
+         
         }
 
 
-        private void Atualizar_Grid()
-        {
-            Int32 vI = dgLivros.CurrentRow.Index;
-            this.Text = dgLivros [0, vI].Value.ToString();
-        }
         public frmLivros()
         {
             InitializeComponent();
+            
         }
 
      
@@ -63,25 +61,30 @@ namespace ProjetoEditora.Forms
 
         private void dgLivros_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // int id = Convert.ToInt32(dgLivros.Rows[e.RowIndex];
-
-            int id = Convert.ToInt32(dgLivros.Rows[e.RowIndex].Cells["livid"].Value.ToString()) ;
-
-            if (dgLivros.Columns[e.ColumnIndex] == dgLivros.Columns["editar"])
+            if (dgLivros.Columns[e.ColumnIndex].Name == "excluir" && e.RowIndex >= 0)
             {
-                 dgLivros.Rows[e.RowIndex].Cells[e.ColumnIndex].ToString();
-            }
+                int livroId = Convert.ToInt32(dgLivros.Rows[e.RowIndex].Cells["livid"].Value);
 
-          else  if (dgLivros.Columns[e.ColumnIndex] == dgLivros.Columns["excluir"])
-            {
-                Sql sql = new Sql();
-                sql.Delete(null);
+                LivroModel livroModel = new LivroModel { livid = livroId };
+
+                sql.Delete(livroModel);
+
+                dgLivros.Rows.RemoveAt(e.RowIndex);
             }
         }
 
         private void dgLivros_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
         {
            
+        }
+
+        private void pesquisa_TextChanged(object sender, EventArgs e)
+        {
+            LivroModel livroModel = new LivroModel();
+            livroModel.nome = pesquisa.Text;
+            livroModel.livid = 1; 
+
+            sql.Pesquisar(livroModel);
         }
     }
 }

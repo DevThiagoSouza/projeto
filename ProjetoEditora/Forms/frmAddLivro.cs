@@ -1,5 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using ProjetoEditora.Conection;
+using ProjetoEditora.DB;
+using ProjetoEditora.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -31,38 +33,17 @@ namespace ProjetoEditora.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            salvar();
+            Sql sql = new Sql();
+
+            LivroModel livroModel = new LivroModel();
+            livroModel.nome = txtNomeLivro.Text; 
+            livroModel.anoPublicacao =Convert.ToInt32( txtAno.Text); 
+            livroModel.isbn =Convert.ToDecimal( sbn.Text); 
+            livroModel.observacao = txtObs.Text; 
+          //  livroModel.ediid = int.Parse(txtEdiid.Text); 
+
+            sql.NewBook(livroModel);
         }
-        public void salvar()
-        {
-            DataTable dt = new DataTable();
-            MySqlConnection con = ConectionDB.Connection();
-            MySqlCommand cmd = new MySqlCommand();
-            cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO tbllivros (livid, livnome, livanopublicacao, livsbn, livobservacoes, ediid) VALUES (20, '" + txtNomeLivro.Text + "', '" + txtAno.Text + "', '" + sbn.Text + "', '" + txtObs.Text + "', 1) ";
-            cmd.CommandTimeout = 3000;
-            cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Clear();
-            cmd.Prepare();
 
-
-            try
-            {
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                dt.Load(dataReader);
-
-
-
-            }
-            catch (Exception ex)
-            {
-                MessageBox.Show("Erro ao salvar na tabela de livros" + ex.Message, "Erro" + MessageBoxIcon.Error, MessageBoxButtons.OK);
-
-            }
-            finally
-            {
-                ConectionDB.CloseConection(con);
-            }
-        }
     }
 }

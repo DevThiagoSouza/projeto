@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmLivros));
             this.dgLivros = new System.Windows.Forms.DataGridView();
             this.label1 = new System.Windows.Forms.Label();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
+            this.pesquisa = new System.Windows.Forms.TextBox();
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.tbnFechar = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             ((System.ComponentModel.ISupportInitialize)(this.dgLivros)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.tbnFechar)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
@@ -46,9 +47,10 @@
             // 
             // dgLivros
             // 
-            dataGridViewCellStyle2.BackColor = System.Drawing.Color.White;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.Color.Silver;
-            this.dgLivros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle2;
+            this.dgLivros.AllowUserToOrderColumns = true;
+            dataGridViewCellStyle1.BackColor = System.Drawing.Color.White;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Silver;
+            this.dgLivros.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
             this.dgLivros.BorderStyle = System.Windows.Forms.BorderStyle.None;
             this.dgLivros.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgLivros.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -80,6 +82,16 @@
             this.statusStrip1.TabIndex = 6;
             this.statusStrip1.Text = "statusStrip1";
             // 
+            // pesquisa
+            // 
+            this.pesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.pesquisa.Location = new System.Drawing.Point(490, 25);
+            this.pesquisa.Name = "pesquisa";
+            this.pesquisa.Size = new System.Drawing.Size(204, 20);
+            this.pesquisa.TabIndex = 7;
+            this.pesquisa.Text = "Pesquisar";
+            this.pesquisa.TextChanged += new System.EventHandler(this.pesquisa_TextChanged);
+            // 
             // dataGridViewImageColumn1
             // 
             this.dataGridViewImageColumn1.FillWeight = 30F;
@@ -87,6 +99,7 @@
             this.dataGridViewImageColumn1.Image = global::ProjetoEditora.Properties.Resources.editar_48;
             this.dataGridViewImageColumn1.Name = "dataGridViewImageColumn1";
             this.dataGridViewImageColumn1.ToolTipText = "Click aqui para Editar";
+            this.dataGridViewImageColumn1.Width = 50;
             // 
             // dataGridViewImageColumn2
             // 
@@ -107,22 +120,6 @@
             this.tbnFechar.TabStop = false;
             this.tbnFechar.Click += new System.EventHandler(this.tbnFechar_Click);
             // 
-            // editar
-            // 
-            this.editar.FillWeight = 30F;
-            this.editar.HeaderText = "Column1";
-            this.editar.Image = global::ProjetoEditora.Properties.Resources.editar_48;
-            this.editar.Name = "editar";
-            this.editar.ToolTipText = "Click aqui para Editar";
-            // 
-            // excluir
-            // 
-            this.excluir.HeaderText = "Column1";
-            this.excluir.Image = global::ProjetoEditora.Properties.Resources.excluir_16;
-            this.excluir.Name = "excluir";
-            this.excluir.ToolTipText = "Click aqui para excluir";
-            this.excluir.Width = 30;
-            // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
@@ -133,12 +130,30 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // editar
+            // 
+            this.editar.HeaderText = "Editar";
+            this.editar.Image = global::ProjetoEditora.Properties.Resources.editar_24;
+            this.editar.Name = "editar";
+            this.editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Programmatic;
+            this.editar.ToolTipText = "Click aqui para Editar";
+            this.editar.Width = 50;
+            // 
+            // excluir
+            // 
+            this.excluir.HeaderText = "Excluir";
+            this.excluir.Image = global::ProjetoEditora.Properties.Resources.excluir_16;
+            this.excluir.Name = "excluir";
+            this.excluir.ToolTipText = "Click aqui para excluir";
+            this.excluir.Width = 50;
+            // 
             // frmLivros
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.pesquisa);
             this.Controls.Add(this.statusStrip1);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.tbnFechar);
@@ -164,9 +179,10 @@
         private System.Windows.Forms.PictureBox tbnFechar;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.StatusStrip statusStrip1;
-        private System.Windows.Forms.DataGridViewImageColumn editar;
-        private System.Windows.Forms.DataGridViewImageColumn excluir;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.TextBox pesquisa;
+        private System.Windows.Forms.DataGridViewImageColumn editar;
+        private System.Windows.Forms.DataGridViewImageColumn excluir;
     }
 }

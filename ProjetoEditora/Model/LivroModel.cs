@@ -10,7 +10,7 @@ namespace ProjetoEditora.Model
     {
         public int livid { get; set; }
         public string nome { get; set; }
-        public DateTime anoPublicacao { get; set; }
+        public int anoPublicacao { get; set; }
         public decimal isbn { get; set; }
         public string observacao { get; set; }
         public int ediid { get; set; }
