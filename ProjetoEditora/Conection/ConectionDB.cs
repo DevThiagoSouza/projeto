@@ -17,7 +17,7 @@ namespace ProjetoEditora.Conection
         private static MySqlCommand _command;
         private static MySqlDataAdapter _Adaptador;
         private static DataTable _dataTable;
-        private static string Conexao = "datasource=127.0.0.1;port=3306;username=root;password=123456789;database=PEROJETO_EDITORA";
+        private static string Conexao = "datasource=127.0.0.1;port=3306;username=root;password=123456789;database=SistemaEditoras";
 
 
         public static MySqlConnection Connection()

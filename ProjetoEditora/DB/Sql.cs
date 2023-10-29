@@ -58,12 +58,12 @@ namespace ProjetoEditora.DB
                 using (MySqlCommand cmd = new MySqlCommand())
                 {
                     cmd.Connection = con;
-                    cmd.CommandText = "INSERT INTO tbllivros (livid ,nome, anoPublicacao, isbn, observacao, ediid) VALUES (1, @livnome, @livanopublicacao, @livsbn, @livobservacoes, 1)";
+                    cmd.CommandText = "INSERT INTO tbllivros (nome, anoPublicacao, isbn, observacao) VALUES ( @livnome, @livanopublicacao, @livsbn, @livobservacoes)";
                     cmd.Parameters.AddWithValue("@livnome", livroModel.nome);
                     cmd.Parameters.AddWithValue("@livanopublicacao", livroModel.anoPublicacao);
                     cmd.Parameters.AddWithValue("@livsbn", livroModel.isbn);
                     cmd.Parameters.AddWithValue("@livobservacoes", livroModel.observacao);
-                    cmd.Parameters.AddWithValue("@ediid", livroModel.ediid);
+                   // cmd.Parameters.AddWithValue("@ediid", livroModel.ediid);
                     cmd.CommandTimeout = 3000;
                     cmd.CommandType = CommandType.Text;
 
