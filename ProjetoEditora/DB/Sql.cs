@@ -88,20 +88,21 @@ namespace ProjetoEditora.DB
             MySqlConnection con = ConectionDB.Connection();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = $"UPDATE tbllivros SET {livroModel.nome}, {livroModel.anoPublicacao}, {livroModel.isbn}, {livroModel.observacao} WHERE {livroModel.livid};";
+            cmd.CommandText = $"UPDATE tbllivros SET nome = @nome, anoPublicacao = @anoPublicacao, isbn = @isbn, observacao = @observacao WHERE livid = @livid;";
+            cmd.Parameters.AddWithValue("@nome", livroModel.nome);
+            cmd.Parameters.AddWithValue("@anoPublicacao", livroModel.anoPublicacao);
+            cmd.Parameters.AddWithValue("@isbn", livroModel.isbn);
+            cmd.Parameters.AddWithValue("@observacao", livroModel.observacao);
+            cmd.Parameters.AddWithValue("@livid", livroModel.livid);
             cmd.CommandTimeout = 3000;
             cmd.CommandType = CommandType.Text;
-            cmd.Parameters.Clear();
-            cmd.Prepare();
 
             try
             {
-                MySqlDataReader dataReader = cmd.ExecuteReader();
-                dt.Load(dataReader);
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {
-
                 MessageBox.Show("Erro ao Atualizar na tabela de livros" + ex.Message, "Erro" + MessageBoxIcon.Error, MessageBoxButtons.OK);
             }
             finally
@@ -160,6 +161,43 @@ namespace ProjetoEditora.DB
                 }
             }
         }
+
+        public LivroModel GetLivroById(int id)
+        {
+            LivroModel livro = null;
+            MySqlConnection con = ConectionDB.Connection();
+            MySqlCommand cmd = new MySqlCommand($"SELECT * FROM tbllivros WHERE livid = @id", con);
+            cmd.Parameters.AddWithValue("@id", id);
+
+            try
+            {
+                con.Open();
+                MySqlDataReader reader = cmd.ExecuteReader();
+
+                if (reader.Read())
+                {
+                    livro = new LivroModel
+                    {
+                        livid = reader.GetInt32("livid"),
+                        nome = reader.GetString("nome"),
+                        anoPublicacao = reader.GetInt32("anoPublicacao"),
+                        isbn = reader.GetDecimal("isbn"),
+                        observacao = reader.GetString("observacao")
+                    };
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.Message);
+            }
+            finally
+            {
+                con.Close();
+            }
+
+            return livro;
+        }
+
 
 
 

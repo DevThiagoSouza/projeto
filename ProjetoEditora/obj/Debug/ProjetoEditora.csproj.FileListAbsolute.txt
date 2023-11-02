@@ -96,3 +96,7 @@ D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\System.IO.Pip
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmAddLivro.resources
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmAddEditoras.resources
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmAddAutores.resources
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.login.resources
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\DocumentFormat.OpenXml.dll
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\MaterialSkin.dll
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\DocumentFormat.OpenXml.xml
