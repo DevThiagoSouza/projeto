@@ -52,7 +52,12 @@ namespace ProjetoEditora.Forms
 
         private void txtSenha_Click(object sender, EventArgs e)
         {
-            
+            txtSenha.Text = "";
+        }
+
+        private void txtLogin_Click(object sender, EventArgs e)
+        {
+            txtLogin.Text = "";
         }
     }
 }

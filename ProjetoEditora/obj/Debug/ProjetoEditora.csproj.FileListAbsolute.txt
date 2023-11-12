@@ -100,3 +100,6 @@ D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditor
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\DocumentFormat.OpenXml.dll
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\MaterialSkin.dll
 D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\bin\Debug\DocumentFormat.OpenXml.xml
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmEditLivro.resources
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmautores.resources
+D:\Aulas unip\AULAS MARCAL\ProjetoEditora\ProjetoEditora\obj\Debug\ProjetoEditora.Forms.frmEditora.resources

@@ -35,7 +35,6 @@ namespace ProjetoEditora.Forms
             dgLivros.Columns["Editora"].DisplayIndex = 4;
             dgLivros.Columns["Excluir"].DisplayIndex = 5;
 
-
          
         }
 
@@ -45,8 +44,6 @@ namespace ProjetoEditora.Forms
             InitializeComponent();
             
         }
-
-     
 
         private void tbnFechar_Click(object sender, EventArgs e)
         {
@@ -72,7 +69,11 @@ namespace ProjetoEditora.Forms
                 dgLivros.Rows.RemoveAt(e.RowIndex);
             }
 
-
+            if(dgLivros.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
+            {
+                frmEditLivro frmEdit = new frmEditLivro();
+                frmEdit.ShowDialog();
+            }
             if (dgLivros.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
             {
                 int livroId = Convert.ToInt32(dgLivros.Rows[e.RowIndex].Cells["livid"].Value);

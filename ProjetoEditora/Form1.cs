@@ -105,5 +105,17 @@ namespace ProjetoEditora
         {
             Close();
         }
+
+        private void btnAutor_Click(object sender, EventArgs e)
+        {
+            frmautores frmautores = new frmautores();
+            frmautores.ShowDialog();
+        }
+
+        private void btnEditora_Click(object sender, EventArgs e)
+        {
+            frmEditora edtora = new frmEditora();
+            edtora.ShowDialog();
+        }
     }
 }

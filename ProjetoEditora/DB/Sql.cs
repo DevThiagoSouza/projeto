@@ -49,6 +49,67 @@ namespace ProjetoEditora.DB
             finally { ConectionDB.CloseConection(con); } return dt;
         }
 
+        public DataTable allEditoras()
+        {
+            DataTable dt = new DataTable();
+            MySqlConnection con = ConectionDB.Connection();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "select * from tbleditoras ";
+            cmd.CommandTimeout = 3000;
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Clear();
+            cmd.Prepare();
+
+
+            try
+            {
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                dt.Load(dataReader);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao fazer seleção no banco de dados" + ex.Message, "Erro" + MessageBoxIcon.Error, MessageBoxButtons.OK);
+
+            }
+            finally { ConectionDB.CloseConection(con); }
+            return dt;
+        }
+
+        public DataTable allAutores()
+        {
+            DataTable dt = new DataTable();
+            MySqlConnection con = ConectionDB.Connection();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+            cmd.CommandText = "select * from tblautores ";
+            cmd.CommandTimeout = 3000;
+            cmd.CommandType = CommandType.Text;
+            cmd.Parameters.Clear();
+            cmd.Prepare();
+
+
+            try
+            {
+
+                MySqlDataReader dataReader = cmd.ExecuteReader();
+                dt.Load(dataReader);
+
+
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Erro ao fazer seleção no banco de dados" + ex.Message, "Erro" + MessageBoxIcon.Error, MessageBoxButtons.OK);
+
+            }
+            finally { ConectionDB.CloseConection(con); }
+            return dt;
+        }
+
+
 
         public void NewBook(LivroModel livroModel)
         {

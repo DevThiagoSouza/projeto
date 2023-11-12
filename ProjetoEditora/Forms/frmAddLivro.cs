@@ -45,5 +45,44 @@ namespace ProjetoEditora.Forms
             sql.NewBook(livroModel);
         }
 
+        private void txtAno_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtObs_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void sbn_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txtNomeLivro_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }

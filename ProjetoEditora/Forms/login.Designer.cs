@@ -63,6 +63,7 @@
             this.txtLogin.TabIndex = 1;
             this.txtLogin.Text = "Usuario";
             this.txtLogin.UseSystemPasswordChar = false;
+            this.txtLogin.Click += new System.EventHandler(this.txtLogin_Click);
             // 
             // txtSenha
             // 

@@ -62,6 +62,7 @@
             this.txtNomeLivro.Name = "txtNomeLivro";
             this.txtNomeLivro.Size = new System.Drawing.Size(370, 20);
             this.txtNomeLivro.TabIndex = 2;
+            this.txtNomeLivro.TextChanged += new System.EventHandler(this.txtNomeLivro_TextChanged);
             // 
             // sbn
             // 
@@ -70,6 +71,7 @@
             this.sbn.Name = "sbn";
             this.sbn.Size = new System.Drawing.Size(167, 20);
             this.sbn.TabIndex = 3;
+            this.sbn.TextChanged += new System.EventHandler(this.sbn_TextChanged);
             // 
             // txtObs
             // 
@@ -79,6 +81,7 @@
             this.txtObs.Size = new System.Drawing.Size(358, 174);
             this.txtObs.TabIndex = 4;
             this.txtObs.Text = "";
+            this.txtObs.TextChanged += new System.EventHandler(this.txtObs_TextChanged);
             // 
             // label1
             // 
@@ -89,6 +92,7 @@
             this.label1.Size = new System.Drawing.Size(122, 20);
             this.label1.TabIndex = 6;
             this.label1.Text = "Nome do livro:";
+            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // label2
             // 
@@ -99,6 +103,7 @@
             this.label2.Size = new System.Drawing.Size(153, 18);
             this.label2.TabIndex = 7;
             this.label2.Text = "Ano da Publicação:";
+            this.label2.Click += new System.EventHandler(this.label2_Click);
             // 
             // label3
             // 
@@ -109,6 +114,7 @@
             this.label3.Size = new System.Drawing.Size(35, 18);
             this.label3.TabIndex = 8;
             this.label3.Text = "sbn";
+            this.label3.Click += new System.EventHandler(this.label3_Click);
             // 
             // label4
             // 
@@ -119,6 +125,7 @@
             this.label4.Size = new System.Drawing.Size(128, 24);
             this.label4.TabIndex = 9;
             this.label4.Text = "Observação:";
+            this.label4.Click += new System.EventHandler(this.label4_Click);
             // 
             // txtAno
             // 
@@ -127,6 +134,7 @@
             this.txtAno.Name = "txtAno";
             this.txtAno.Size = new System.Drawing.Size(167, 20);
             this.txtAno.TabIndex = 10;
+            this.txtAno.TextChanged += new System.EventHandler(this.txtAno_TextChanged);
             // 
             // btnConfirmar
             // 
