@@ -33,10 +33,12 @@
             this.dataGridViewImageColumn1 = new System.Windows.Forms.DataGridViewImageColumn();
             this.dataGridViewImageColumn2 = new System.Windows.Forms.DataGridViewImageColumn();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.Editar = new System.Windows.Forms.DataGridViewImageColumn();
             this.Excluir = new System.Windows.Forms.DataGridViewImageColumn();
-            this.Editar = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dtgridAutores)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             this.SuspendLayout();
             // 
             // dtgridAutores
@@ -89,6 +91,26 @@
             this.pictureBox1.TabIndex = 1;
             this.pictureBox1.TabStop = false;
             // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Image = global::ProjetoEditora.Properties.Resources.fechar_janela;
+            this.pictureBox2.Location = new System.Drawing.Point(731, 12);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(32, 28);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 5;
+            this.pictureBox2.TabStop = false;
+            this.pictureBox2.Click += new System.EventHandler(this.pictureBox2_Click);
+            // 
+            // Editar
+            // 
+            this.Editar.HeaderText = "Editar";
+            this.Editar.Image = global::ProjetoEditora.Properties.Resources.editar_24;
+            this.Editar.Name = "Editar";
+            this.Editar.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Editar.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            this.Editar.Width = 50;
+            // 
             // Excluir
             // 
             this.Excluir.HeaderText = "Excluir";
@@ -98,26 +120,24 @@
             this.Excluir.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
             this.Excluir.Width = 50;
             // 
-            // Editar
-            // 
-            this.Editar.HeaderText = "Editar";
-            this.Editar.Name = "Editar";
-            // 
             // frmautores
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.White;
             this.ClientSize = new System.Drawing.Size(784, 411);
+            this.Controls.Add(this.pictureBox2);
             this.Controls.Add(this.lblautores);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.dtgridAutores);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmautores";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmautores";
             this.Load += new System.EventHandler(this.frmautores_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dtgridAutores)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -128,9 +148,10 @@
         private System.Windows.Forms.DataGridView dtgridAutores;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Label lblautores;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Editar;
-        private System.Windows.Forms.DataGridViewImageColumn Excluir;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn1;
         private System.Windows.Forms.DataGridViewImageColumn dataGridViewImageColumn2;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.DataGridViewImageColumn Editar;
+        private System.Windows.Forms.DataGridViewImageColumn Excluir;
     }
 }

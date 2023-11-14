@@ -33,8 +33,13 @@ namespace ProjetoEditora.Forms
 
         private void frmautores_Load(object sender, EventArgs e)
         {
-            Sql sql = new Sql();
+            sql = new Sql();
             Carrega_Grid();
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
