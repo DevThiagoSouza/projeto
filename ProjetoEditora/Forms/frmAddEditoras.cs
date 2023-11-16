@@ -31,7 +31,7 @@ namespace ProjetoEditora.Forms
             MySqlConnection con = ConectionDB.Connection();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO tbleditoras (ediid,edinome, edisigla, ediobservacoes) VALUES (20, '"+ NomeEditora.Text+ "', '"+ sigla.Text + "', '"+ Obs.Text + "') ";
+            cmd.CommandText = "INSERT INTO tbleditoras (edinome, edisigla, ediobservacoes) VALUES ( '"+ NomeEditora.Text+ "', '"+ sigla.Text + "', '"+ Obs.Text + "') ";
             cmd.CommandTimeout = 3000;
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();

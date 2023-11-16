@@ -33,16 +33,44 @@ namespace ProjetoEditora.Forms
 
         private void btnConfirmar_Click(object sender, EventArgs e)
         {
-            Sql sql = new Sql();
+            // Validação de entrada
+            if (string.IsNullOrEmpty(txtNomeLivro.Text) ||
+                string.IsNullOrEmpty(txtAno.Text) ||
+                string.IsNullOrEmpty(sbn.Text) ||
+                string.IsNullOrEmpty(txtObs.Text))
+            {
+                MessageBox.Show("Por favor, preencha todos os campos.");
+                return;
+            }
+
+            if (!int.TryParse(txtAno.Text, out int anoPublicacao))
+            {
+                MessageBox.Show("Por favor, insira um ano válido.");
+                return;
+            }
+
+            if (!decimal.TryParse(sbn.Text, out decimal isbn))
+            {
+                MessageBox.Show("Por favor, insira um ISBN válido.");
+                return;
+            }
 
             LivroModel livroModel = new LivroModel();
-            livroModel.nome = txtNomeLivro.Text; 
-            livroModel.anoPublicacao =Convert.ToInt32( txtAno.Text); 
-            livroModel.isbn =Convert.ToDecimal( sbn.Text); 
-            livroModel.observacao = txtObs.Text; 
-          //  livroModel.ediid = int.Parse(txtEdiid.Text); 
+            livroModel.nome = txtNomeLivro.Text;
+            livroModel.anoPublicacao = anoPublicacao;
+            livroModel.isbn = isbn;
+            livroModel.observacao = txtObs.Text;
 
-            sql.NewBook(livroModel);
+            try
+            {
+                Sql sql = new Sql();
+                sql.NewBook(livroModel);
+                MessageBox.Show("Livro adicionado com sucesso!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Ocorreu um erro ao adicionar o livro: {ex.Message}");
+            }
         }
 
         private void txtAno_TextChanged(object sender, EventArgs e)

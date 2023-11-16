@@ -19,6 +19,7 @@ namespace ProjetoEditora.Forms
     {
         Sql sql;
 
+
         private void Carrega_Grid()
         {
             dgLivros.AutoGenerateColumns = true;
@@ -69,24 +70,22 @@ namespace ProjetoEditora.Forms
                 dgLivros.Rows.RemoveAt(e.RowIndex);
             }
 
-            if(dgLivros.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
-            {
-                frmEditLivro frmEdit = new frmEditLivro();
-                frmEdit.ShowDialog();
-            }
             if (dgLivros.Columns[e.ColumnIndex].Name == "editar" && e.RowIndex >= 0)
             {
                 int livroId = Convert.ToInt32(dgLivros.Rows[e.RowIndex].Cells["livid"].Value);
-
                 LivroModel livroModel = sql.GetLivroById(livroId);
 
-                sql.Update(livroModel);
+                frmEditLivro frmEdit = new frmEditLivro(livroModel);
+                frmEdit.ShowDialog();
+
+                livroModel = sql.GetLivroById(livroId);
 
                 dgLivros.Rows[e.RowIndex].Cells["nome"].Value = livroModel.nome;
                 dgLivros.Rows[e.RowIndex].Cells["anoPublicacao"].Value = livroModel.anoPublicacao;
                 dgLivros.Rows[e.RowIndex].Cells["isbn"].Value = livroModel.isbn;
                 dgLivros.Rows[e.RowIndex].Cells["observacao"].Value = livroModel.observacao;
             }
+
         }
 
         private void dgLivros_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)

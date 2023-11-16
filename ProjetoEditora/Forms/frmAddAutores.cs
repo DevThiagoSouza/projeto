@@ -35,7 +35,7 @@ namespace ProjetoEditora.Forms
             MySqlConnection con = ConectionDB.Connection();
             MySqlCommand cmd = new MySqlCommand();
             cmd.Connection = con;
-            cmd.CommandText = "INSERT INTO tblautores (autid, autnome, autseudominio, autobservacoes)VALUES (1, '" + NomeAutor.Text + "', '" + dominio.Text + "', '" + Obs.Text + "') ";
+            cmd.CommandText = "INSERT INTO tblautores ( autnome, autseudominio, autobservacoes)VALUES ('" + NomeAutor.Text + "', '" + dominio.Text + "', '" + Obs.Text + "') ";
             cmd.CommandTimeout = 3000;
             cmd.CommandType = CommandType.Text;
             cmd.Parameters.Clear();

@@ -114,32 +114,28 @@ namespace ProjetoEditora.DB
         public void NewBook(LivroModel livroModel)
         {
             DataTable dt = new DataTable();
-            using (MySqlConnection con = ConectionDB.Connection())
-            {
-                using (MySqlCommand cmd = new MySqlCommand())
-                {
-                    cmd.Connection = con;
-                    cmd.CommandText = "INSERT INTO tbllivros (nome, anoPublicacao, isbn, observacao) VALUES ( @livnome, @livanopublicacao, @livsbn, @livobservacoes)";
+            MySqlConnection con = ConectionDB.Connection();
+            MySqlCommand cmd = new MySqlCommand();
+            cmd.Connection = con;
+                    cmd.CommandText = "INSERT INTO tbllivros (livnome, livanopublicacao, livsbn, livobservacoes) VALUES (@livnome, @livanopublicacao, @livsbn, @livobservacoes)";
                     cmd.Parameters.AddWithValue("@livnome", livroModel.nome);
                     cmd.Parameters.AddWithValue("@livanopublicacao", livroModel.anoPublicacao);
                     cmd.Parameters.AddWithValue("@livsbn", livroModel.isbn);
                     cmd.Parameters.AddWithValue("@livobservacoes", livroModel.observacao);
-                   // cmd.Parameters.AddWithValue("@ediid", livroModel.ediid);
                     cmd.CommandTimeout = 3000;
                     cmd.CommandType = CommandType.Text;
 
                     try
                     {
-                        MySqlDataReader dataReader = cmd.ExecuteReader();
-                        dt.Load(dataReader);
+                        cmd.ExecuteNonQuery();
+                        MessageBox.Show("Livro salvo com sucesso!", "Sucesso", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     }
-                    catch (Exception ex) 
+                    catch (Exception ex)
                     {
-
-                        MessageBox.Show("Erro ao salvar na tabela de livros" + ex.Message, "Erro" + MessageBoxIcon.Error, MessageBoxButtons.OK);
+                        MessageBox.Show("Erro ao salvar na tabela de livros: " + ex.Message, "Erro", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
-                }
-            }
+                
+            
         }
 
 
@@ -232,7 +228,6 @@ namespace ProjetoEditora.DB
 
             try
             {
-                con.Open();
                 MySqlDataReader reader = cmd.ExecuteReader();
 
                 if (reader.Read())
